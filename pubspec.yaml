@@ -1,0 +1,27 @@
+name: mobx_architecture
+description: A Flutter package designed to aid in implementing a consistent, widespread architecture pattern, and providing a way to easily, clearly and elegantly bind MobX to the UI.
+version: 1.0.0
+author: Tanzil Zubair Bin Zaman
+homepage: https://tanzilzubair.github.io
+repository:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^4.3.2+3
+  mobx: ^1.2.1+4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
