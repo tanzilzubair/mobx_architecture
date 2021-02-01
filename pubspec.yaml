@@ -3,7 +3,7 @@ description: A Flutter package designed to aid in implementing a consistent, wid
 version: 1.0.0
 author: Tanzil Zubair Bin Zaman
 homepage: https://tanzilzubair.github.io
-repository:
+repository: https://github.com/tanzilzubair/mobx_architecture
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
