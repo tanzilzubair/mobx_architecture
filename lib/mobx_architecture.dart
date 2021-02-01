@@ -1,4 +1,4 @@
-library mobx_mvvm;
+library mobx_architecture;
 
 export 'src/ViewModel_Stores/Stateful_ViewModel_Store_Builder.dart'
     show StatefulVMStoreBuilder;
