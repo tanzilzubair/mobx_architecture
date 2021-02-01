@@ -1,4 +1,4 @@
-# MobX MVVM
+# MobX Architecture
 
 ***Hello!*** This package allows you to more easily and cleanly bind your MobX stores to your UI. Depending on  whether people actually like and use it, more functionality might be added to it.
 For now, however, it focuses  mainly on the binding of ViewModels to the UI,  and provides one additional class containing the height and width of the screen, for sizing widgets more conveniently. ( No one wants MediaQueries scattered all over the place, now do they? )
