@@ -78,7 +78,7 @@ class _StatefulVMStoreBuilderState<T extends Store>
       _store = widget.viewModelStoreBuilder();
     } else {
       print(
-          "Unexpected error occurred in the MobX Architecture Package, in the StatefulViewModelStoreBuilder Widget, "
+          "Unexpected error occurred in the MobX Architecture Package, in the StatefulVMStoreBuilder Widget, "
           "I'm serious, something has gone terribly wrong, like there's "
           "absolutely no way this should ever fire");
     }

@@ -17,15 +17,15 @@ smooshing together the  ***Widget-Store-Service***
 - The ***Model*** is relatively unchanged, and houses the services, API calls etc.  
 - The ***ViewModel*** is unified with the ***MobX Store***, and has the dual purpose of managing state (either local, shared or any other) as well as   
 the business logic of the corresponding ***View*** 
-* The ***View*** is relatively unchanged, with the one major difference being ***Observer*** widgets sprinkled about as necessary,wrapping the parts of the UI  
+- The ***View*** is relatively unchanged, with the one major difference being ***Observer*** widgets sprinkled about as necessary, wrapping the parts of the UI  
 that render based on the state of the app
 
 ---
 
 *This package assumes the following:*
 - You are using the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) architecture pattern to architect your app
-- You are using [Provider](https://pub.dev/packages/provider) to inject your MobX stores. ( Although not required *per se*, as the package has widgets for that scenario, it is still ***highly*** recommended )
- Using the parts of the package that depend on Provider ( Only the 
+- You are using [Provider](https://pub.dev/packages/provider) to inject your MobX stores. ( Although not required *per se*, as the package has widgets for that scenario, it is still ***highly*** recommended ).
+
 ---
 
 *This package depends on / must be used in conjunction with the following extra packages:*
@@ -34,9 +34,12 @@ that render based on the state of the app
 ---
 ### Note:
 - [Provider](https://pub.dev/packages/provider) is **highly** recommended to be used alongside MobX itself, as well as this package, and is internally used by parts of the package as well,to inject your MobX stores wherever they are required. Checkout the MobX [docs](https://mobx.netlify.app/guides/stores/) for more info.
+- Using the parts of the package that depend on Provider ( .usesProvider constructors ) without actually having Provider as a dependency may lead to unexpected behaviour
 ---
-*Before we begin, here are some packages that I reccommend using with this package, some because they play  better than others with this package, and some because I feel they promote the safest, cleanest code:*
-- [Get_it](https://pub.dev/packages/get_it) for a service locator ( Even though Provider is most likely a dependency already, this package comes in handy for injecting services and such, and also for accessing them from **ViewModels**, where the ***BuildContext*** isn't as readily available, if at all
+*Before we begin, here are some packages that I recommend using with this package, some because they play  better than others with this package, and some because I feel they promote the safest, cleanest code:*
+- [Get_it](https://pub.dev/packages/get_it) for a service locator ( Even though Provider is most likely a dependency already, this package comes in handy for  
+injecting services and such, and also for accessing them from *ViewModels*, where the *BuildContext* isn't as readily available, if at all
+- [Hive](https://pub.dev/packages/hive) for local data persistence
 ---
 
 This package exposes 4 widgets, and 6 total variations in the implementation across those 4 widgets ( using constructors ), with  

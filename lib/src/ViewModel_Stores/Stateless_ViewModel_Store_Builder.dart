@@ -68,9 +68,10 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
       return builder(context, store, dimens);
     } else {
       print(
-          "Unexpected error occurred in the MobX Architecture Package, in the StatelessViewModelStoreBuilder Widget, "
+          "Unexpected error occurred in the MobX Architecture Package, in the StatelessVMStoreBuilder Widget, "
           "I'm serious, you need to check this out, or report it, or both, like there's "
           "absolutely no way this should ever fire");
+      return null;
     }
   }
 }
