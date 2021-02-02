@@ -1,10 +1,10 @@
 import 'package:mobx_architecture/src/Components/SizingInfo.dart';
 import 'package:flutter/material.dart';
 
-/// This package helps bind your View Model MobX stores with your UI more clearly.
-/// THIS WIDGET DOES NOT OBSERVER STATE, IDEALLY YOU WOULD BE USING OBSERVER WIDGETS FOR THAT FUNCTIONALITY
-///
-/// This particular widget is used to bind a View Model ( one that REQUIRES an initState or dispose function or both )
+// This package helps bind your View Model MobX stores with your UI more clearly.
+// THIS WIDGET DOES NOT OBSERVER STATE, IDEALLY YOU WOULD BE USING OBSERVER WIDGETS FOR THAT FUNCTIONALITY
+
+/// This widget is used to bind a View Model ( one that REQUIRES an initState or dispose function or both )
 /// to the UI in a much more cleaner, manageable and dare I say elegant way
 ///
 /// For use-cases that do NOT require a View Model that uses the initState or dispose function or both, use the [StatelessVMBuilder] widget
@@ -21,11 +21,11 @@ class StatefulVMBuilder<T extends Object> extends StatefulWidget {
     this.viewModelBuilder,
   }) : super(key: key);
 
-  /// This is the function that exposes the View Model in the builder function
+  /// This is the builder function that exposes the View Model, the BuildContext and the SizingInfo object
   final Widget Function(BuildContext context, T viewModel, SizingInfo dimens)
       builder;
 
-  /// This is the function that runs inside (you guessed it!) initState
+  /// This is the function that runs inside initState
   final void Function(T viewModel) initState;
 
   /// This is the function that runs inside dispose
@@ -45,10 +45,10 @@ class _StatefulVMBuilderState<T extends Object>
   void initState() {
     super.initState();
 
-    ///Using the given View Model
+    // Using the given View Model
     _viewModel = widget.viewModelBuilder();
 
-    /// Checking to see if a initState function was provided, and running it if it was
+    // Checking to see if a initState function was provided, and running it if it was
     if (widget.initState != null) {
       widget.initState(_viewModel);
     }
@@ -56,7 +56,7 @@ class _StatefulVMBuilderState<T extends Object>
 
   @override
   void dispose() {
-    /// Checking to see if a dispose function was provided, and running it if it was
+    // Checking to see if a dispose function was provided, and running it if it was
     if (widget.dispose != null) {
       widget.dispose(_viewModel);
     }
@@ -66,8 +66,8 @@ class _StatefulVMBuilderState<T extends Object>
 
   @override
   Widget build(BuildContext context) {
-    /// Getting the size of the screen and providing that too, cause it's convenient and nice and polite and yes I
-    /// will be repeating this next time
+    // Getting the size of the screen and providing that too, cause it's convenient and nice and polite and yes I
+    // will be repeating this next time
     SizingInfo dimens = SizingInfo(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height);
