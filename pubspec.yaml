@@ -1,6 +1,6 @@
 name: mobx_architecture
 description: A Flutter package designed to aid in implementing a consistent, widespread architecture pattern, and providing a way to easily, clearly and elegantly bind MobX to the UI.
-version: 1.0.1
+version: 1.0.2
 homepage: https://tanzilzubair.github.io
 repository: https://github.com/tanzilzubair/mobx_architecture
 
