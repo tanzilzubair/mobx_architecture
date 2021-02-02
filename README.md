@@ -36,8 +36,7 @@ that render based on the state of the app
 - [Provider](https://pub.dev/packages/provider) is **highly** recommended to be used alongside MobX itself, as well as this package, and is internally used by parts of the package as well,to inject your MobX stores wherever they are required. Checkout the MobX [docs](https://mobx.netlify.app/guides/stores/) for more info.
 ---
 *Before we begin, here are some packages that I reccommend using with this package, some because they play  better than others with this package, and some because I feel they promote the safest, cleanest code:*
-- [Get_it](https://pub.dev/packages/get_it) for a service locator ( Even though Provider is most likely a dependency already, this package comes in handy for  
-injecting services and such, and also for accessing them from **ViewModels**, where the ***BuildContext*** isn't as readily available, if at all
+- [Get_it](https://pub.dev/packages/get_it) for a service locator ( Even though Provider is most likely a dependency already, this package comes in handy for injecting services and such, and also for accessing them from **ViewModels**, where the ***BuildContext*** isn't as readily available, if at all
 ---
 
 This package exposes 4 widgets, and 6 total variations in the implementation across those 4 widgets ( using constructors ), with  
