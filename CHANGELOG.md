@@ -1,3 +1,7 @@
+# [1.0.3] - Updated README.md
+
+* Fixed formatting
+
 # [1.0.2] - Fixed Typo
 
 * Fixed typo in the docs
