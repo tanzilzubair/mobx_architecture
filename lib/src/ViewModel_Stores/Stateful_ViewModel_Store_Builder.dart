@@ -23,16 +23,16 @@ enum _ViewModelType { UsesProvider, StandAlone }
 class StatefulVMStoreBuilder<T extends Store> extends StatefulWidget {
   /// This is the constructor to use for when the MobX store is injected using Provider
   const StatefulVMStoreBuilder.usesProvider(
-      {Key key, @required this.builder, this.initState, this.dispose})
+      {Key? key, required this.builder, this.initState, this.dispose})
       : viewModelStoreBuilder = null,
         _viewModelType = _ViewModelType.UsesProvider,
         super(key: key);
 
   /// This is the constructor to use for a standalone MobX store that is NOT injected using Provider
   const StatefulVMStoreBuilder.standAlone({
-    Key key,
-    @required this.builder,
-    @required this.viewModelStoreBuilder,
+    Key? key,
+    required this.builder,
+    required this.viewModelStoreBuilder,
     this.initState,
     this.dispose,
   })  : _viewModelType = _ViewModelType.StandAlone,
@@ -42,15 +42,15 @@ class StatefulVMStoreBuilder<T extends Store> extends StatefulWidget {
   final Widget Function(BuildContext context, T store, SizingInfo dimens)
       builder;
 
-  /// This is the function that runs inside initState
-  final void Function(T store) initState;
+  /// This is the optional function that runs inside initState
+  final void Function(T store)? initState;
 
-  /// This is the function that runs inside dispose
-  final void Function(T store) dispose;
+  /// This is the optional function that runs inside dispose
+  final void Function(T store)? dispose;
 
-  /// This is the function that builds the MobX ViewModel Store, and is to be used ONLY when
+  /// This is the conditional function that builds the MobX ViewModel Store, and is to be used ONLY when
   /// the store is not being injected using Provider
-  final T Function() viewModelStoreBuilder;
+  final T Function()? viewModelStoreBuilder;
 
   /// This is to aid in the conditional logic inside the widget to either get the MobX store
   /// from Provider or just build the store given
@@ -63,7 +63,7 @@ class StatefulVMStoreBuilder<T extends Store> extends StatefulWidget {
 
 class _StatefulVMStoreBuilderState<T extends Store>
     extends State<StatefulVMStoreBuilder<T>> {
-  T _store;
+  late T _store;
   @override
   void initState() {
     super.initState();
@@ -75,7 +75,7 @@ class _StatefulVMStoreBuilderState<T extends Store>
       _store = context.read<T>();
     } else if (widget._viewModelType == _ViewModelType.StandAlone) {
       // Using the given standalone store
-      _store = widget.viewModelStoreBuilder();
+      _store = widget.viewModelStoreBuilder!();
     } else {
       print(
           "Unexpected error occurred in the MobX Architecture Package, in the StatefulVMStoreBuilder Widget, "
@@ -85,7 +85,7 @@ class _StatefulVMStoreBuilderState<T extends Store>
 
     // Checking to see if a initState function was provided, and running it if it was
     if (widget.initState != null) {
-      widget.initState(_store);
+      widget.initState!(_store);
     }
   }
 
@@ -93,7 +93,7 @@ class _StatefulVMStoreBuilderState<T extends Store>
   void dispose() {
     // Checking to see if a dispose function was provided, and running it if it was
     if (widget.dispose != null) {
-      widget.dispose(_store);
+      widget.dispose!(_store);
     }
 
     super.dispose();

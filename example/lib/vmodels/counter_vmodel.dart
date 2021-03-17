@@ -1,5 +1,5 @@
 class CounterVModel {
-  CounterVModel({this.value});
+  CounterVModel({required this.value});
 
   int value;
 

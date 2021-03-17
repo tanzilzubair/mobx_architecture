@@ -1,3 +1,8 @@
+## [2.0.0] - Null safety migration
+* MobX architecture has been fully migrated to null safety
+* Fixed README.md formatting and typos, and changed parts for clarity
+* Fixed example to be null-safe
+
 ## [1.0.4] - Minor changes
 
 * Updated README.md

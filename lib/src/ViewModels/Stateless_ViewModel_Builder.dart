@@ -14,9 +14,9 @@ import 'package:flutter/material.dart';
 class StatelessVMBuilder<T extends Object> extends StatelessWidget {
   /// This is the constructor to use for binding the View Model to the View
   const StatelessVMBuilder({
-    Key key,
-    @required this.builder,
-    @required this.viewModelBuilder,
+    Key? key,
+    required this.builder,
+    required this.viewModelBuilder,
   }) : super(key: key);
 
   /// This is the builder function that exposes the View Model, the BuildContext and the SizingInfo object

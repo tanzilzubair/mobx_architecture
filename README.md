@@ -1,6 +1,7 @@
 # MobX Architecture
 
-***Hello!*** This package allows you to more easily and cleanly bind your MobX stores to your UI. Depending on  whether people actually like and use it, more functionality might be added to it. 
+***Hello!*** 
+This package allows you to more easily and cleanly bind your MobX stores to your UI. Depending on  whether people actually like and use it, more functionality might be added to it. 
 For now, however, it focuses  mainly on the binding of ViewModels to the UI,  and provides one additional class containing the height and width of the screen, for sizing widgets more conveniently. ( No one wants MediaQueries scattered all over the place, now do they? ) 
 
 If you do like this package, please do star it over on GitHub. Any and all contributions, whether they be to the docs, or the code, in the form of bug fixes or new features or even feature requests, are all highly, highly appreciated and encouraged.   
@@ -10,10 +11,7 @@ This package has a lot of potential, and I plan to actively maintain this packag
 ## Getting Started
 
 ### First, let's get some of the introductions, assumptions, and  requirements out of the way. 
-This package helps implement a custom version of the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) architecture pattern,
-smooshing together the  ***Widget-Store-Service***  
- organization pattern mentioned in the [Flutter MobX docs](https://en.wikipedia.org/wiki/Model–view–viewmodel) with the traditional  
- **Model-View-ViewModel** architecture pattern, resulting in a unified pattern where:
+This package helps implement a custom version of the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) architecture pattern, smooshing together the ***Widget-Store-Service*** organization pattern mentioned in the [Flutter MobX docs](https://en.wikipedia.org/wiki/Model–view–viewmodel) with the traditional **Model-View-ViewModel** architecture pattern, resulting in a unified pattern where:
 - The ***Model*** is relatively unchanged, and houses the services, API calls etc.  
 - The ***ViewModel*** is unified with the ***MobX Store***, and has the dual purpose of managing state (either local, shared or any other) as well as   
 the business logic of the corresponding ***View*** 
@@ -96,6 +94,7 @@ They widgets are therefore as follows:
 
 -  *StatelessVMStoreBuilder\<T>( )*: This widget is used for when you ***don't*** need to access widget lifecycle methods,  and are binding a ViewModel that is also a MobX Store to the UI. It has two constructors: 
    - *StatelesslVMStoreBuilder\<T>.standAlone( )* : This constructor is used if you are not using the Provider package
+   
 		``` dart
 			StatelessVMStoreBuilder<Store>.standAlone(  
 			  key: ///Optionally provide a key , 
@@ -110,6 +109,7 @@ They widgets are therefore as follows:
 			);
 		```
    - *StatelessVMStoreBuilder\<T>.usesProvider( )* : This constructor is used if you are using the Provider package. It automatically reads the appropriate store from the type ***T*** , using Provider.
+   
 		``` dart
 			StatelessVMStoreBuilder<Store>.usesProvider(  
 			  key: ///Optionally provide a key , 
@@ -159,7 +159,7 @@ They widgets are therefore as follows:
 		);
 	```
 ---
-The package has been designed with ***modularity*** as one of its core principles. Except for MVVM, MobX itself, and Provider, which nearly 100% of people use alongside MobX, the package enforces ***no*** additional packages or principles, from Dialog services , to data persistence, to how you should structure your app , it's all left to the developer to implement in any way they please.
+The package has been designed with ***modularity*** as one of its core principles. Except for MVVM, MobX itself, and Provider, which nearly 100% of people use alongside MobX, the package enforces ***no*** additional packages or principles, from Dialog services to data persistence, all the way to how you should structure your app, it's all left to the developer to implement in any way they please.
 
 This stems from a core belief that every project is different, and has a different set of requirements and a rigorous structure and certain way to do things may only ever result in benefiting a small percentage of those projects, if that, and will likely result in many scenarios where people might have to "fight the framework", so to speak. 
 As such, going forward, this is probably the only thing about this framework that will be set in stone. 

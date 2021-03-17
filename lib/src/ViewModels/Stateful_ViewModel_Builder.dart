@@ -14,22 +14,22 @@ import 'package:flutter/material.dart';
 class StatefulVMBuilder<T extends Object> extends StatefulWidget {
   /// This is the constructor to use for binding the View Model to the View
   const StatefulVMBuilder({
-    Key key,
-    @required this.builder,
+    Key? key,
+    required this.builder,
     this.initState,
     this.dispose,
-    this.viewModelBuilder,
+    required this.viewModelBuilder,
   }) : super(key: key);
 
   /// This is the builder function that exposes the View Model, the BuildContext and the SizingInfo object
   final Widget Function(BuildContext context, T viewModel, SizingInfo dimens)
       builder;
 
-  /// This is the function that runs inside initState
-  final void Function(T viewModel) initState;
+  /// This is the optional function that runs inside initState
+  final void Function(T viewModel)? initState;
 
-  /// This is the function that runs inside dispose
-  final void Function(T viewModel) dispose;
+  /// This is the optional function that runs inside dispose
+  final void Function(T viewModel)? dispose;
 
   /// This is the function that builds the View Model
   final T Function() viewModelBuilder;
@@ -40,7 +40,7 @@ class StatefulVMBuilder<T extends Object> extends StatefulWidget {
 
 class _StatefulVMBuilderState<T extends Object>
     extends State<StatefulVMBuilder<T>> {
-  T _viewModel;
+  late T _viewModel;
   @override
   void initState() {
     super.initState();
@@ -50,7 +50,7 @@ class _StatefulVMBuilderState<T extends Object>
 
     // Checking to see if a initState function was provided, and running it if it was
     if (widget.initState != null) {
-      widget.initState(_viewModel);
+      widget.initState!(_viewModel);
     }
   }
 
@@ -58,7 +58,7 @@ class _StatefulVMBuilderState<T extends Object>
   void dispose() {
     // Checking to see if a dispose function was provided, and running it if it was
     if (widget.dispose != null) {
-      widget.dispose(_viewModel);
+      widget.dispose!(_viewModel);
     }
 
     super.dispose();

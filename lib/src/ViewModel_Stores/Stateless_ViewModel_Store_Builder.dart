@@ -23,18 +23,18 @@ enum _ViewModelType { UsesProvider, StandAlone }
 class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
   /// This is the constructor to use for when the MobX store is injected using Provider
   const StatelessVMStoreBuilder.usesProvider({
-    Key key,
-    @required this.builder,
-  })  : viewModelStoreBuilder = null,
+    Key? key,
+    required this.builder,
+  })   : viewModelStoreBuilder = null,
         _viewModelType = _ViewModelType.UsesProvider,
         super(key: key);
 
   /// This is the constructor to use for a standalone MobX store that is NOT injected using Provider
   const StatelessVMStoreBuilder.standAlone({
-    Key key,
-    @required this.builder,
-    @required this.viewModelStoreBuilder,
-  })  : _viewModelType = _ViewModelType.StandAlone,
+    Key? key,
+    required this.builder,
+    required this.viewModelStoreBuilder,
+  })   : _viewModelType = _ViewModelType.StandAlone,
         super(key: key);
 
   /// This is the builder function that exposes the View Model MobX store, the BuildContext and the SizingInfo object
@@ -43,7 +43,7 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
 
   /// This is the function that builds the MobX ViewModel Store, and is to be used ONLY when
   /// the store is not being injected using Provider
-  final T Function() viewModelStoreBuilder;
+  final T Function()? viewModelStoreBuilder;
 
   /// This is to aid in the conditional logic inside the widget to either get the MobX store
   /// from Provider or just build the store given
@@ -64,14 +64,14 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
       return builder(context, context.select((T store) => store), dimens);
     } else if (_viewModelType == _ViewModelType.StandAlone) {
       // Using the given standalone store
-      T store = viewModelStoreBuilder();
+      T store = viewModelStoreBuilder!();
       return builder(context, store, dimens);
     } else {
       print(
           "Unexpected error occurred in the MobX Architecture Package, in the StatelessVMStoreBuilder Widget, "
           "I'm serious, you need to check this out, or report it, or both, like there's "
           "absolutely no way this should ever fire");
-      return null;
+      return Container();
     }
   }
 }
