@@ -1,4 +1,3 @@
-import 'package:mobx_architecture/src/Components/SizingInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -39,8 +38,8 @@ class StatefulVMStoreBuilder<T extends Store> extends StatefulWidget {
         super(key: key);
 
   /// This is the builder function that exposes the View Model MobX store, the BuildContext and the SizingInfo object
-  final Widget Function(BuildContext context, T store, SizingInfo dimens)
-      builder;
+  final Widget Function(
+      BuildContext context, T store, MediaQueryData mediaQuery) builder;
 
   /// This is the optional function that runs inside initState
   final void Function(T store)? initState;
@@ -101,10 +100,11 @@ class _StatefulVMStoreBuilderState<T extends Store>
 
   @override
   Widget build(BuildContext context) {
-    // Getting the size of the screen and providing that too, cause it's convenient and nice and polite ;)
-    SizingInfo dimens = SizingInfo(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height);
-    return widget.builder(context, context.select((T store) => store), dimens);
+    if (widget._viewModelType == _ViewModelType.StandAlone) {
+      return widget.builder(context, _store, MediaQuery.of(context));
+    } else {
+      return widget.builder(
+          context, context.select((T store) => store), MediaQuery.of(context));
+    }
   }
 }

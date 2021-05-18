@@ -1,4 +1,3 @@
-import 'package:mobx_architecture/src/Components/SizingInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -38,8 +37,8 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
         super(key: key);
 
   /// This is the builder function that exposes the View Model MobX store, the BuildContext and the SizingInfo object
-  final Widget Function(BuildContext context, T store, SizingInfo dimens)
-      builder;
+  final Widget Function(
+      BuildContext context, T store, MediaQueryData mediaQuery) builder;
 
   /// This is the function that builds the MobX ViewModel Store, and is to be used ONLY when
   /// the store is not being injected using Provider
@@ -51,21 +50,16 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Getting the size of the screen and providing that too, cause it's convenient and nice and poli- wait
-    // I've said this before haven't I ? Dammit
-    SizingInfo dimens = SizingInfo(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height);
-
     // This is the conditional logic determining whether to get the MobX store from Provider
     // or just build the standalone store given
     if (_viewModelType == _ViewModelType.UsesProvider) {
       // Using from Provider
-      return builder(context, context.select((T store) => store), dimens);
+      return builder(
+          context, context.select((T store) => store), MediaQuery.of(context));
     } else if (_viewModelType == _ViewModelType.StandAlone) {
       // Using the given standalone store
       T store = viewModelStoreBuilder!();
-      return builder(context, store, dimens);
+      return builder(context, store, MediaQuery.of(context));
     } else {
       print(
           "Unexpected error occurred in the MobX Architecture Package, in the StatelessVMStoreBuilder Widget, "

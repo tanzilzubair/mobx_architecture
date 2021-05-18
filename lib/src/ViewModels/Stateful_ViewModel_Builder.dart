@@ -1,4 +1,3 @@
-import 'package:mobx_architecture/src/Components/SizingInfo.dart';
 import 'package:flutter/material.dart';
 
 // This package helps bind your View Model MobX stores with your UI more clearly.
@@ -22,8 +21,8 @@ class StatefulVMBuilder<T extends Object> extends StatefulWidget {
   }) : super(key: key);
 
   /// This is the builder function that exposes the View Model, the BuildContext and the SizingInfo object
-  final Widget Function(BuildContext context, T viewModel, SizingInfo dimens)
-      builder;
+  final Widget Function(
+      BuildContext context, T viewModel, MediaQueryData mediaQuery) builder;
 
   /// This is the optional function that runs inside initState
   final void Function(T viewModel)? initState;
@@ -66,12 +65,6 @@ class _StatefulVMBuilderState<T extends Object>
 
   @override
   Widget build(BuildContext context) {
-    // Getting the size of the screen and providing that too, cause it's convenient and nice and polite and yes I
-    // will be repeating this next time
-    SizingInfo dimens = SizingInfo(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height);
-    T viewModel = _viewModel;
-    return widget.builder(context, viewModel, dimens);
+    return widget.builder(context, _viewModel, MediaQuery.of(context));
   }
 }

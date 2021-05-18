@@ -17,8 +17,8 @@ class CounterExample1 extends StatelessWidget {
           builder: (context, counterStoreVM, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.size.width,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -58,8 +58,8 @@ class CounterExample2 extends StatelessWidget {
           builder: (context, counterStoreVM, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.size.width,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -103,8 +103,8 @@ class _CounterExample3State extends State<CounterExample3> {
           builder: (context, counterStoreVM, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.sizewidth,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -155,8 +155,8 @@ class _CounterExample4State extends State<CounterExample4> {
           builder: (context, counterStoreVM, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.size.width,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -207,8 +207,8 @@ class _CounterExample5State extends State<CounterExample5> {
           builder: (context, counterModel, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.size.width,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -259,8 +259,8 @@ class _CounterExample6State extends State<CounterExample6> {
           builder: (context, counterModel, sizingInfo) {
             return Container(
               // Using the sizing information provided in the builder function
-              height: sizingInfo.height,
-              width: sizingInfo.width,
+              height: sizingInfo.size.height,
+              width: sizingInfo.size.width,
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
