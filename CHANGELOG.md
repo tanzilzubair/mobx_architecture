@@ -1,3 +1,6 @@
+## [3.0.1] - Minor code formatting
+* Fixed a formatting issue
+
 ## [3.0.0] - Error fixes and improvements
 ### Breaking changes
 * Deprecated SizingInfo. Constructors now provide an instance of MediaQueryData
@@ -29,6 +32,6 @@
 
 * Minor changes to the docs for dartdoc
 
-#3 [1.0.0] - Initial Release
+## [1.0.0] - Initial Release
 
 * Initial release

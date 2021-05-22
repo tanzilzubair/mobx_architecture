@@ -24,7 +24,7 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
   const StatelessVMStoreBuilder.usesProvider({
     Key? key,
     required this.builder,
-  })   : viewModelStoreBuilder = null,
+  })  : viewModelStoreBuilder = null,
         _viewModelType = _ViewModelType.UsesProvider,
         super(key: key);
 
@@ -33,7 +33,7 @@ class StatelessVMStoreBuilder<T extends Store> extends StatelessWidget {
     Key? key,
     required this.builder,
     required this.viewModelStoreBuilder,
-  })   : _viewModelType = _ViewModelType.StandAlone,
+  })  : _viewModelType = _ViewModelType.StandAlone,
         super(key: key);
 
   /// This is the builder function that exposes the View Model MobX store, the BuildContext and the SizingInfo object
